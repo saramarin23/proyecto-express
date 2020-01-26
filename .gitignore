@@ -1,0 +1,5 @@
+/node_modules
+# Variables de entorno:
+.env 
+# MAC:
+.DS_Store
