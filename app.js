@@ -8,7 +8,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+
+// http://localhost:3000/books
+const booksRouter = require('./routes/books');
+
+// http://localhost:3000/songs
+const songsRouter = require('./routes/songs');
 
 const app = express();
 
@@ -18,11 +23,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// http:localhost:3000/
+//Routes middleware entrypoint
+// http://localhost:3000/
 app.use('/', indexRouter);
-
-// http:localhost:3000/users
-app.use('/users', usersRouter);
+// http://localhost:3000/books
+app.use('/books', booksRouter);
+// http://localhost:3000/songs
+app.use('/songs', songsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
